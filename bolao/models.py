@@ -27,6 +27,7 @@ class Game(models.Model):
     team2 = models.ForeignKey(Team, related_name='team2_games', on_delete=models.CASCADE)
     final_score1 = models.IntegerField()
     final_score2 = models.IntegerField()
+    campeonato = models.ForeignKey(Campeonato,on_delete=models.CASCADE, blank=False, null=False)
     date = models.DateTimeField()
 
     def __str__(self):
