@@ -3,7 +3,31 @@ from django.contrib.auth.models import User
 from rest_framework import generics, permissions, status
 from rest_framework.response import Response
 from .models import Team, Game, Bet
-from .serializers import UserSerializer, TeamSerializer, GameSerializer, BetSerializer
+from .serializers import *
+
+class CampeonatoList(generics.ListCreateAPIView):
+    queryset = Campeonato.objects.all()
+    serializer_class = CampeonatoSerializer
+    permission_classes = [permissions.AllowAny]
+
+class CampeonatoDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Campeonato.objects.all()
+    serializer_class = CampeonatoSerializer
+    permission_classes = [permissions.AllowAny]
+
+class BolaoList(generics.ListCreateAPIView):
+    queryset = Bolao.objects.all()
+    serializer_class = BolaoSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def perform_create(self, serializer):
+        bolao = serializer.save(criado_por=self.request.user)
+        bolao.participante.set([self.request.user])  # Adicionar o usuário autenticado como participante
+
+class BolaoDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Bolao.objects.all()
+    serializer_class = BolaoSerializer
+    permission_classes = [permissions.AllowAny]
 
 class UserList(generics.ListCreateAPIView):
     queryset = User.objects.all()

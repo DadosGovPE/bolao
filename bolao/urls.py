@@ -6,6 +6,10 @@ from rest_framework_simplejwt.views import (
 from .views import *
 
 urlpatterns = [
+    path('campeonatos/', CampeonatoList.as_view(), name='campeonato-list'),
+    path('campeonatos/<int:pk>/', CampeonatoDetail.as_view(), name='campeonato-detail'),
+    path('boloes/', BolaoList.as_view(), name='bolao-list'),
+    path('boloes/<int:pk>/', BolaoDetail.as_view(), name='bolao-detail'),
     path('users/', UserList.as_view(), name='user-list'),
     path('users/<int:pk>/', UserDetail.as_view(), name='user-detail'),
     path('teams/', TeamList.as_view(), name='team-list'),

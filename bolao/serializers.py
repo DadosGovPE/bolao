@@ -1,6 +1,21 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import Team, Game, Bet
+from .models import *
+
+class CampeonatoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Campeonato
+        fields = ['id', 'nome']
+
+class BolaoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Bolao
+        fields = ['id', 'nome', 'criado_em', 'criado_por', 'campeonato', 'participante']
+        read_only_fields = ['criado_por', 'participante']  # Não permitir que os campos sejam preenchidos na criação
+
+    def create(self, validated_data):
+        bolao = Bolao.objects.create(**validated_data)
+        return bolao
 
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=True, style={'input_type': 'password'})
@@ -30,7 +45,7 @@ class GameSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Game
-        fields = ['id', 'team1', 'team2', 'team1_id', 'team2_id', 'date']
+        fields = ['id', 'team1', 'team2', 'team1_id', 'team2_id', 'final_score1', 'final_score2', 'date']
 
 class BetSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
