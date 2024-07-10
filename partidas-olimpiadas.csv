@@ -1,0 +1,25 @@
+Date,Time,Group,Location,Team1,Team2,Fase
+24-07-2024,11:00,A,"Allianz Riviera, Nice",Guine,New Zealand,1ª Rodada
+24-07-2024,15:00,A,"Orange Velodrome, Marseille",France,USA,1ª Rodada
+27-07-2024,13:00,A,"Orange Velodrome, Marseille",New Zealand,USA,2ª Rodada
+27-07-2024,15:00,A,"Allianz Riviera, Nice",France,Guine,2ª Rodada
+30-07-2024,13:00,A,"Orange Velodrome, Marseille",New Zealand,France,3ª Rodada
+30-07-2024,13:00,A,"Stade Geoffroy-Guichard, Saint-Etienne",USA,Guine,3ª Rodada
+24-07-2024,09:00,B,"Stade Geoffroy-Guichard, Saint-Etienne",Argentina,Morocco,1ª Rodada
+24-07-2024,13:00,B,"Groupama Stadium, Lyon",Guine,Ukraine,1ª Rodada
+27-07-2024,09:00,B,"Groupama Stadium, Lyon",Argentina,Guine,2ª Rodada
+27-07-2024,11:00,B,"Stade Geoffroy-Guichard, Saint-Etienne",Ukraine,Morocco,2ª Rodada
+30-07-2024,13:00,B,"Groupama Stadium, Lyon",Ukraine,Argentina,3ª Rodada
+30-07-2024,13:00,B,"Allianz Riviera, Nice",Morocco,Guine,3ª Rodada
+24-07-2024,09:00,C,"Parc des Princes, Paris",Guine,Spain,1ª Rodada
+24-07-2024,11:00,C,"Stade de la Beaujoire, Nantes",Egypt,Dominican Republic,1ª Rodada
+27-07-2024,09:00,C,"Matmut Atlantique, Bordeaux",Dominican Republic,Spain,2ª Rodada
+27-07-2024,11:00,C,"Stade de la Beaujoire, Nantes",Guine,Egypt,2ª Rodada
+30-07-2024,09:00,C,"Matmut Atlantique, Bordeaux",Guine,Dominican Republic,3ª Rodada
+30-07-2024,11:00,C,"Parc des Princes, Paris",Spain,Egypt,3ª Rodada
+24-07-2024,11:00,D,"Nice Stadium, Nice",Japan,Mali,1ª Rodada
+24-07-2024,15:00,D,"Bordeaux Stadium, Bordeaux",Israel,Paraguay,1ª Rodada
+27-07-2024,11:00,D,"Bordeaux Stadium, Bordeaux",Paraguay,Mali,2ª Rodada
+27-07-2024,15:00,D,"Nice Stadium, Nice",Japan,Israel,2ª Rodada
+30-07-2024,11:00,D,"Nice Stadium, Nice",Mali,Israel,3ª Rodada
+30-07-2024,15:00,D,"Bordeaux Stadium, Bordeaux",Japan,Paraguay,3ª Rodada

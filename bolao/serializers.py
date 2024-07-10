@@ -18,7 +18,7 @@ class GameSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Game
-        fields = ['id', 'team1', 'team2', 'team1_id', 'team2_id', 'final_score1', 'final_score2', 'campeonato', 'date']
+        fields = ['id', 'team1', 'team2', 'team1_id', 'team2_id', 'final_score1', 'final_score2', 'campeonato', 'location', 'fase', 'date']
 
 class CampeonatoSerializer(serializers.ModelSerializer):
     games = GameSerializer(many=True, read_only=True, source='game_set')
