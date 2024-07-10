@@ -11,7 +11,7 @@ class BolaoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Bolao
         fields = ['id', 'nome', 'criado_em', 'criado_por', 'campeonato', 'participante']
-        read_only_fields = ['criado_por', 'criado_em']  # Não permitir que os campos sejam preenchidos na criação
+        read_only_fields = ['participante', 'criado_por', 'criado_em']  # Não permitir que os campos sejam preenchidos na criação
 
     def create(self, validated_data):
         bolao = Bolao.objects.create(**validated_data)
