@@ -11,11 +11,17 @@ class BolaoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Bolao
         fields = ['id', 'nome', 'criado_em', 'criado_por', 'campeonato', 'participante']
-        read_only_fields = ['criado_por', 'participante']  # Não permitir que os campos sejam preenchidos na criação
+        read_only_fields = ['criado_por', 'criado_em']  # Não permitir que os campos sejam preenchidos na criação
 
     def create(self, validated_data):
         bolao = Bolao.objects.create(**validated_data)
         return bolao
+    def update(self, instance, validated_data):
+        participantes = validated_data.pop('participante', None)
+        instance = super().update(instance, validated_data)
+        if participantes is not None:
+            instance.participante.set(participantes)
+        return instance
 
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=True, style={'input_type': 'password'})
