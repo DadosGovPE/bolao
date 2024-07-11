@@ -71,6 +71,14 @@ class GameDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = GameSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
+class MyGameList(generics.ListAPIView):
+    serializer_class = GameSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        camp_id = self.kwargs.get('camp_id')
+        return Game.objects.filter(campeonato__id=camp_id)
+
 class BetList(generics.ListCreateAPIView):
     queryset = Bet.objects.all()
     serializer_class = BetSerializer

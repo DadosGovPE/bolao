@@ -18,6 +18,7 @@ urlpatterns = [
     path('teams/<int:pk>/', TeamDetail.as_view(), name='team-detail'),
     path('games/', GameList.as_view(), name='game-list'),
     path('games/<int:pk>/', GameDetail.as_view(), name='game-detail'),
+    path('games/mygames/<int:camp_id>/', MyGameList.as_view(), name='my-games-list'),
     path('bets/', BetList.as_view(), name='bet-list'),
     path('bets/<int:pk>/', BetDetail.as_view(), name='bet-detail'),
     path('bets/mybets/<int:bolao_id>/', MyBetList.as_view(), name='my-bet-list'),
