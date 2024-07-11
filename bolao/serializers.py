@@ -28,6 +28,9 @@ class CampeonatoSerializer(serializers.ModelSerializer):
         fields = ['id', 'nome', 'games']
 
 class BolaoSerializer(serializers.ModelSerializer):
+    campeonato = serializers.StringRelatedField()
+    criado_por = serializers.StringRelatedField()
+    
     class Meta:
         model = Bolao
         fields = ['id', 'nome', 'criado_em', 'criado_por', 'campeonato', 'participante']
