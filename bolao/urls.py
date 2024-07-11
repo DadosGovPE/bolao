@@ -20,6 +20,7 @@ urlpatterns = [
     path('games/<int:pk>/', GameDetail.as_view(), name='game-detail'),
     path('bets/', BetList.as_view(), name='bet-list'),
     path('bets/<int:pk>/', BetDetail.as_view(), name='bet-detail'),
+    path('bets/mybets/<int:bolao_id>/', MyBetList.as_view(), name='my-bet-list'),
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]

@@ -10,7 +10,7 @@ class Bolao(models.Model):
     nome = models.CharField(max_length=100, blank=False, null=False, unique=True)
     criado_em = models.DateTimeField(auto_now_add=True)
     criado_por = models.ForeignKey(User, related_name='boloes',on_delete=models.CASCADE, blank=False, null=False)
-    campeonato = models.ForeignKey(Campeonato,on_delete=models.CASCADE, blank=False, null=False)
+    campeonato = models.ForeignKey(Campeonato,on_delete=models.CASCADE, blank=False, null=False, related_name='bolao')
     participante = models.ManyToManyField(User)
 
     def __str__(self):
@@ -38,6 +38,7 @@ class Game(models.Model):
 class Bet(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    bolao = models.ForeignKey(Bolao,on_delete=models.CASCADE, blank=False, null=False)
     team1_score = models.IntegerField()
     team2_score = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)

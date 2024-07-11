@@ -62,7 +62,8 @@ class BetSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
     game = GameSerializer(read_only=True)
     game_id = serializers.PrimaryKeyRelatedField(queryset=Game.objects.all(), write_only=True, source='game')
+    bolao = serializers.PrimaryKeyRelatedField(queryset=Bolao.objects.all())
 
     class Meta:
         model = Bet
-        fields = ['id', 'user', 'game', 'game_id', 'team1_score', 'team2_score', 'created_at']
+        fields = ['id', 'user', 'game', 'game_id', 'bolao', 'team1_score', 'team2_score', 'created_at']

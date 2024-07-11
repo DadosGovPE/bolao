@@ -78,10 +78,12 @@ class BetList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         user = self.request.user
         game_id = self.request.data.get('game_id')
+        bolao_id = self.request.data.get('bolao')
         game = get_object_or_404(Game, id=game_id)
+        bolao = get_object_or_404(Bolao, id=bolao_id)
         
         # Verificar se já existe uma aposta para este usuário e este jogo
-        existing_bet = Bet.objects.filter(user=user, game=game).first()
+        existing_bet = Bet.objects.filter(user=user, game=game, bolao=bolao).first()
         
         if existing_bet:
             # Se a aposta existir, atualizar a aposta existente
@@ -92,7 +94,7 @@ class BetList(generics.ListCreateAPIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         
         # Se não existir, criar uma nova aposta
-        serializer.save(user=user, game=game)
+        serializer.save(user=user, game=game, bolao=bolao)
 
 
 class BetDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -100,6 +102,15 @@ class BetDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = BetSerializer
     permission_classes = [permissions.IsAuthenticated]
 
+
+class MyBetList(generics.ListAPIView):
+    serializer_class = BetSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        bolao_id = self.kwargs.get('bolao_id')
+        return Bet.objects.filter(user=user, bolao__id=bolao_id)
 
 @api_view(['PATCH'])
 @permission_classes([permissions.IsAuthenticated])
