@@ -24,7 +24,8 @@ class BolaoList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def perform_create(self, serializer):
-        bolao = serializer.save(criado_por=self.request.user)
+        campeonato = self.request.data.get('campeonato')
+        bolao = serializer.save(criado_por=self.request.user, campeonato_id=campeonato)
         bolao.participante.set([self.request.user])  # Adicionar o usuário autenticado como participante
 
 class BolaoDetail(generics.RetrieveUpdateDestroyAPIView):
