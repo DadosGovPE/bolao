@@ -76,8 +76,10 @@ class MyGameList(generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        camp_id = self.kwargs.get('camp_id')
-        return Game.objects.filter(campeonato__id=camp_id)
+        bolao_id = self.kwargs.get('bolao_id')
+        bolao = get_object_or_404(Bolao, id=bolao_id)
+        campeonato = bolao.campeonato
+        return Game.objects.filter(campeonato=campeonato)
 
 class BetList(generics.ListCreateAPIView):
     queryset = Bet.objects.all()
